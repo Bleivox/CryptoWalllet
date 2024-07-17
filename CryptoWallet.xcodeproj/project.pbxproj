@@ -9,21 +9,26 @@
 /* Begin PBXBuildFile section */
 		D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EC2C385148003A6005 /* AppDelegate.swift */; };
 		D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EE2C385148003A6005 /* SceneDelegate.swift */; };
-		D8C838F12C385148003A6005 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838F02C385148003A6005 /* ViewController.swift */; };
+		D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838F02C385148003A6005 /* AuthViewController.swift */; };
 		D8C838F42C385148003A6005 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F32C385148003A6005 /* Base */; };
 		D8C838F62C385149003A6005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F52C385149003A6005 /* Assets.xcassets */; };
 		D8C838F92C385149003A6005 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F82C385149003A6005 /* Base */; };
+		D8C839072C3DCF80003A6005 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8C839062C3DCF80003A6005 /* SnapKit */; };
+		D8C839092C443889003A6005 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839082C443889003A6005 /* Person.swift */; };
+		D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8390B2C454D81003A6005 /* CoinsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D8C838E92C385148003A6005 /* CryptoWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C838EC2C385148003A6005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8C838EE2C385148003A6005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D8C838F02C385148003A6005 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D8C838F02C385148003A6005 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		D8C838F32C385148003A6005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8C838F52C385149003A6005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8C838F82C385149003A6005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8C838FA2C385149003A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D8C839082C443889003A6005 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		D8C8390B2C454D81003A6005 /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +36,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8C839072C3DCF80003A6005 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,13 +64,23 @@
 			children = (
 				D8C838EC2C385148003A6005 /* AppDelegate.swift */,
 				D8C838EE2C385148003A6005 /* SceneDelegate.swift */,
-				D8C838F02C385148003A6005 /* ViewController.swift */,
+				D8C8390B2C454D81003A6005 /* CoinsViewController.swift */,
+				D8C838F02C385148003A6005 /* AuthViewController.swift */,
 				D8C838F22C385148003A6005 /* Main.storyboard */,
 				D8C838F52C385149003A6005 /* Assets.xcassets */,
 				D8C838F72C385149003A6005 /* LaunchScreen.storyboard */,
 				D8C838FA2C385149003A6005 /* Info.plist */,
+				D8C8390A2C4438E6003A6005 /* Models */,
 			);
 			path = CryptoWallet;
+			sourceTree = "<group>";
+		};
+		D8C8390A2C4438E6003A6005 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D8C839082C443889003A6005 /* Person.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +99,9 @@
 			dependencies = (
 			);
 			name = CryptoWallet;
+			packageProductDependencies = (
+				D8C839062C3DCF80003A6005 /* SnapKit */,
+			);
 			productName = CryptoWallet;
 			productReference = D8C838E92C385148003A6005 /* CryptoWallet.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +130,9 @@
 				Base,
 			);
 			mainGroup = D8C838E02C385148003A6005;
+			packageReferences = (
+				D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = D8C838EA2C385148003A6005 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +160,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C838F12C385148003A6005 /* ViewController.swift in Sources */,
+				D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */,
 				D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */,
+				D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */,
 				D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */,
+				D8C839092C443889003A6005 /* Person.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,7 +242,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -275,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -300,6 +324,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -328,6 +353,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,6 +389,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D8C839062C3DCF80003A6005 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D8C838E12C385148003A6005 /* Project object */;
 }

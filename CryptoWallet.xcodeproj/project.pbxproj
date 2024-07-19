@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AED68EA52C4AB3E000F8342E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */; };
+		AED68EA72C4AB3EA00F8342E /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */; };
 		D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EC2C385148003A6005 /* AppDelegate.swift */; };
 		D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EE2C385148003A6005 /* SceneDelegate.swift */; };
 		D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838F02C385148003A6005 /* AuthViewController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
 		D8C838E92C385148003A6005 /* CryptoWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C838EC2C385148003A6005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8C838EE2C385148003A6005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,7 +69,9 @@
 				D8C838EC2C385148003A6005 /* AppDelegate.swift */,
 				D8C838EE2C385148003A6005 /* SceneDelegate.swift */,
 				D8C8390B2C454D81003A6005 /* CoinsViewController.swift */,
+				AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */,
 				D8C838F02C385148003A6005 /* AuthViewController.swift */,
+				AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */,
 				D8C838F22C385148003A6005 /* Main.storyboard */,
 				D8C838F52C385149003A6005 /* Assets.xcassets */,
 				D8C838F72C385149003A6005 /* LaunchScreen.storyboard */,
@@ -161,7 +167,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */,
+				AED68EA72C4AB3EA00F8342E /* CoinsViewModel.swift in Sources */,
 				D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */,
+				AED68EA52C4AB3E000F8342E /* AuthViewModel.swift in Sources */,
 				D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */,
 				D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */,
 				D8C839092C443889003A6005 /* Person.swift in Sources */,

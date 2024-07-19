@@ -8,11 +8,49 @@
 import UIKit
 import SnapKit
 
+// В AppDelegate проверять флаг в юзердефолтс
+// Если флаг isAuth == true - то показываем экран с монетами сразу
+    // Если на экране монет нажали кнопку логаут то возвращаемся на экран авторизации
+// Если флаг isAuth == false - то показываем экран с арторизацией
+    // После авторизации сохранять флаг в тру
+
+class TextFieldWithError: UITextField {
+    
+    enum State {
+        case success(text: String)
+        case failure(errorMessage: String)
+    }
+    
+    
+    /// обрабатывает состояние ошибки
+    
+}
+
+// Прочитать про Result
+enum Result<Success, Failure: Error> {
+    case success(Success)
+    case failure(Failure)
+}
+
+// View --> ViewModel --> Coordinator
+// MVVM - архитектура
+// View == ViewController
+// ViewModel -> ViewController имеет ссылку на вью
+// ViewModel -> Не знает о view или ViewController
+// ViewModel - может оповестить ViewController об изменениях
+// ViewModel через замыкание оповещает вью об изменениях
+
+
 class ViewController: UIViewController {
     
- let showCoinsSegueIdentifier = "showCoins"
+// Segue надо удалить. Роутеры и координаторы - прочитать.
+// Router in ios Swift. Coordinator vs Router
     
+    let showCoinsSegueIdentifier = "showCoins"
+    
+    // Убрать @IBOutlet и сделать всю верстку в коде. Сториборды удалить
     @IBOutlet weak var loginTextField: UITextField!
+//    private let loginTextField: UITextField = UITextField()
     
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -32,13 +70,16 @@ class ViewController: UIViewController {
 //    
 //    }
     
+//    func method(param: String, closure: (String) -> Void) {
+//        print(param)
+//        closure("param")
+//    }
+    
     private enum Keys: String {
         case password, login
     }
     
     override func viewDidLoad() {
-        
-        
         super.viewDidLoad()
         
         errorText.isHidden = true
@@ -163,7 +204,7 @@ class ViewController: UIViewController {
     }
   
     func dropError() {
-        
+        passwordTextField.backgroundColor = .red
         passwordTextField.layer.borderColor = UIColor.red.cgColor
         
         errorText.isHidden = false
@@ -176,13 +217,35 @@ class ViewController: UIViewController {
         
         errorText.snp.makeConstraints{ (maker) in
             maker.left.equalTo(view.safeAreaLayoutGuide).inset(18)
-            maker.top.equalTo(passwordTextField.snp.bottom).inset(-2)
+            maker.top.equalTo(passwordTextField.snp.bottom).offset(2)
         }
         
         
         
     }
     
+    func auth() {
+        do {
+            let isValid = try checkPassword("1234")
+            print(isValid)
+        } catch {
+            print("\(error) password doesn't equal to 1234")
+        }
+    }
+    
+    func checkPassword(_ password: String) throws -> Bool  {
+        if password == "1234" {
+            return true
+        } else {
+            throw CustomError.wrongPassword
+        }
+    }
+    
+    enum CustomError: Error {
+        case wrongPassword
+    }
+    
+    // Errors thrown from here are not handled because the enclosing catch is not exhaustive
     
     
     func proofAuthorisation(Person: Person) {

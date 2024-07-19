@@ -14,7 +14,20 @@ import SnapKit
 // Если флаг isAuth == false - то показываем экран с арторизацией
     // После авторизации сохранять флаг в тру
 
+// Как сделать кастомный текст филд с обработкой ошибки?
 class TextFieldWithError: UITextField {
+    
+    // UILabel - title
+    // Constrainst
+    // UITextField
+    // Constrainst
+    // UILabel - optional error
+    // Constrainst
+    
+    // логика самого текст филда
+    // добавить лэбл с ошибкой
+    // обрабатывать состояния показа ошибки
+    // констреинты между текстфилдом и лэйблом ошибки
     
     enum State {
         case success(text: String)
@@ -81,9 +94,15 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        // setupViews()
+        // setupViewModel()
+        setupConstrains()
+        // startLoading()
+//        isAuth()
+    }
+    
+    private func setupConstrains() {
         errorText.isHidden = true
-        
         
         loginTextField.layer.borderColor = UIColor.ypBlue.cgColor
         loginTextField.layer.borderWidth = 1.75
@@ -190,8 +209,6 @@ class ViewController: UIViewController {
             maker.top.equalTo(passwordTextField.snp.bottom).inset(-30)
             
         }
-     
-//        isAuth()
     }
 
     func SuccessAfterError() {

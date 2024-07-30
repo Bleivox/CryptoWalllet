@@ -9,5 +9,11 @@ import Foundation
 import UIKit
 import SnapKit
 
-// CoinsViewController
+final class CoinsViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .green
+    }
+}
     // UICollectionView

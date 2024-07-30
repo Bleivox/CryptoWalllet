@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AEA916972C59580B00492FA1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = AEA916962C59580B00492FA1 /* SnapKit */; };
+		AEA916992C59580B00492FA1 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = AEA916982C59580B00492FA1 /* SnapKit-Dynamic */; };
+		AEA9169C2C595D7600492FA1 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA9169B2C595D7600492FA1 /* AuthRouter.swift */; };
 		AED68EA52C4AB3E000F8342E /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */; };
 		AED68EA72C4AB3EA00F8342E /* CoinsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */; };
 		D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EC2C385148003A6005 /* AppDelegate.swift */; };
@@ -14,7 +17,6 @@
 		D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838F02C385148003A6005 /* AuthViewController.swift */; };
 		D8C838F62C385149003A6005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F52C385149003A6005 /* Assets.xcassets */; };
 		D8C838F92C385149003A6005 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F82C385149003A6005 /* Base */; };
-		D8C839072C3DCF80003A6005 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8C839062C3DCF80003A6005 /* SnapKit */; };
 		D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8390B2C454D81003A6005 /* CoinsViewController.swift */; };
 		D8C839262C554B56003A6005 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839252C554B56003A6005 /* AppRouter.swift */; };
 		D8C839282C554EC3003A6005 /* AuthRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839272C554EC3003A6005 /* AuthRouterProtocol.swift */; };
@@ -22,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AEA9169B2C595D7600492FA1 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ../AuthViewModel.swift; sourceTree = "<group>"; };
 		AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
 		D8C838E92C385148003A6005 /* CryptoWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,7 +45,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8C839072C3DCF80003A6005 /* SnapKit in Frameworks */,
+				AEA916972C59580B00492FA1 /* SnapKit in Frameworks */,
+				AEA916992C59580B00492FA1 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */,
+				AEA9169B2C595D7600492FA1 /* AuthRouter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -109,7 +114,8 @@
 			);
 			name = CryptoWallet;
 			packageProductDependencies = (
-				D8C839062C3DCF80003A6005 /* SnapKit */,
+				AEA916962C59580B00492FA1 /* SnapKit */,
+				AEA916982C59580B00492FA1 /* SnapKit-Dynamic */,
 			);
 			productName = CryptoWallet;
 			productReference = D8C838E92C385148003A6005 /* CryptoWallet.app */;
@@ -140,7 +146,7 @@
 			);
 			mainGroup = D8C838E02C385148003A6005;
 			packageReferences = (
-				D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				AEA916952C59580B00492FA1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = D8C838EA2C385148003A6005 /* Products */;
 			projectDirPath = "";
@@ -170,6 +176,7 @@
 			files = (
 				D8C839282C554EC3003A6005 /* AuthRouterProtocol.swift in Sources */,
 				D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */,
+				AEA9169C2C595D7600492FA1 /* AuthRouter.swift in Sources */,
 				AED68EA72C4AB3EA00F8342E /* CoinsViewModel.swift in Sources */,
 				D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */,
 				AED68EA52C4AB3E000F8342E /* AuthViewModel.swift in Sources */,
@@ -393,7 +400,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+		AEA916952C59580B00492FA1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
 			requirement = {
@@ -404,10 +411,15 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D8C839062C3DCF80003A6005 /* SnapKit */ = {
+		AEA916962C59580B00492FA1 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D8C839052C3DCF80003A6005 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			package = AEA916952C59580B00492FA1 /* XCRemoteSwiftPackageReference "SnapKit" */;
 			productName = SnapKit;
+		};
+		AEA916982C59580B00492FA1 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AEA916952C59580B00492FA1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

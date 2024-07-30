@@ -62,20 +62,22 @@ class AuthViewController: UIViewController {
     // Убрать @IBOutlet и сделать всю верстку в коде. Сториборды удалить
     
     private let mainLabel: UILabel = UILabel()
-    
-    private let loginLabel: UILabel = UILabel()
-    
-    private let loginTextField: UITextField = UITextField()
-    
-    private let passwordLabel: UILabel = UILabel()
-    
-    private let passwordTextField: UITextField = UITextField()
-    
+    private let loginTextField = UITextFieldsWithError(title: "email")
+    private let passwordTextField = UITextFieldsWithError(title: "password")
     private let loginButton: UIButton = UIButton()
     
-    private let errorText: UILabel = UILabel()
-    
     let userDefaults =  UserDefaults()
+    
+    private let viewModel: AuthViewModel
+    
+    init(viewModel: AuthViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
 //    var isAuth =  Bool {
 //        
@@ -121,34 +123,22 @@ class AuthViewController: UIViewController {
     private func setupViewModel() {
         
         loginTextField.layer.borderColor = UIColor.ypBlue.cgColor
-                loginTextField.layer.borderWidth = 1.75
-                loginTextField.layer.cornerRadius = 5
-                loginTextField.dropShadow()
-                loginTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: loginTextField.frame.height))
-                loginTextField.leftViewMode = .always
-                view.addSubview(loginTextField)
+        loginTextField.layer.borderWidth = 1.75
+        loginTextField.layer.cornerRadius = 5
+        loginTextField.dropShadow()
+        loginTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: loginTextField.frame.height))
+        loginTextField.leftViewMode = .always
+        view.addSubview(loginTextField)
         
         
         passwordTextField.borderStyle = .none
-                passwordTextField.layer.borderColor = UIColor.ypBlue.cgColor
-                passwordTextField.layer.borderWidth = 1.75
-                passwordTextField.layer.cornerRadius = 5
-                passwordTextField.dropShadow()
-                passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordTextField.frame.height))
-                passwordTextField.leftViewMode = .always
-                view.addSubview(passwordTextField)
-                
-        
-        loginLabel.text = "Email"
-                loginLabel.textColor = .ypBlue
-                loginLabel.font = .boldSystemFont(ofSize: 13)
-                view.addSubview(loginLabel)
-        
-        
-        passwordLabel.text = "Password"
-                passwordLabel.textColor = .ypBlue
-                passwordLabel.font = .boldSystemFont(ofSize: 13)
-                view.addSubview(passwordLabel)
+        passwordTextField.layer.borderColor = UIColor.ypBlue.cgColor
+        passwordTextField.layer.borderWidth = 1.75
+        passwordTextField.layer.cornerRadius = 5
+        passwordTextField.dropShadow()
+        passwordTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: passwordTextField.frame.height))
+        passwordTextField.leftViewMode = .always
+        view.addSubview(passwordTextField)
         
         mainLabel.text = "Welcome!"
                 mainLabel.textColor = .ypBlue
@@ -165,40 +155,17 @@ class AuthViewController: UIViewController {
                 view.addSubview(loginButton)
     }
     private func setupConstrains() {
-        errorText.isHidden = true
-    
-        loginTextField.snp.makeConstraints { (maker) in
-            
-            maker.right.equalTo(view.safeAreaLayoutGuide).inset(16)
-            maker.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
-            maker.top.equalTo(view.safeAreaLayoutGuide).inset(410)
-            maker.bottom.equalTo(view.safeAreaLayoutGuide).inset(300)
-
+        loginTextField.snp.makeConstraints {
+            $0.left.right.equalTo(view.safeAreaLayoutGuide).inset(16)
+            $0.top.equalTo(view.safeAreaLayoutGuide).inset(410)
+            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(300)
+            $0.height.equalTo(44)
         }
         
-        passwordTextField.snp.makeConstraints{ (maker) in
-            
-            maker.right.equalTo(view.safeAreaLayoutGuide).inset(16)
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(16)
-            maker.width.equalTo(loginTextField.snp.width)
-            maker.height.equalTo(loginTextField.snp.height)
-            maker.top.equalTo(loginTextField.snp.bottom).inset(-30)
-            
-            
-        }
-               
-        loginLabel.snp.makeConstraints{ (maker) in
-         
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(18)
-            maker.bottom.equalTo(loginTextField.snp.top).inset(-2)
-            
-        }
-                
-        passwordLabel.snp.makeConstraints{ (maker) in
-            
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(18)
-            maker.bottom.equalTo(passwordTextField.snp.top).inset(-2)
-            
+        passwordTextField.snp.makeConstraints{
+            $0.right.left.equalTo(view.safeAreaLayoutGuide).inset(16)
+            $0.height.equalTo(44)
+            $0.top.equalTo(loginTextField.snp.bottom).inset(-30)
         }
         
         mainLabel.snp.makeConstraints{ (maker) in
@@ -206,11 +173,8 @@ class AuthViewController: UIViewController {
             maker.left.equalTo(view.safeAreaLayoutGuide).inset(125)
             maker.bottom.equalTo(loginTextField.snp.top).inset(-25)
         }
-              
-        
         
         loginButton.snp.makeConstraints{ (maker) in
-            
             maker.left.equalTo(view.safeAreaLayoutGuide).inset(110)
             maker.right.equalTo(view.safeAreaLayoutGuide).inset(110)
             maker.height.equalTo(50)
@@ -219,33 +183,22 @@ class AuthViewController: UIViewController {
         }
     }
 
-    func SuccessAfterError() {
+    func successAfterError() {
         
         passwordTextField.layer.borderColor = UIColor.ypBlue.cgColor
-        
-        errorText.isHidden = true
-
-        
+        loginTextField.hideError()
     }
   
-    func dropError() {
-        
-        passwordTextField.layer.borderColor = UIColor.red.cgColor
-        
-        errorText.isHidden = false
-        errorText.text = "Enter a valid password"
-        errorText.textColor = UIColor.red
-        errorText.font = .systemFont(ofSize: 13)
-        view.addSubview(errorText)
-        
-        
-        errorText.snp.makeConstraints{ (maker) in
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(18)
-            maker.top.equalTo(passwordTextField.snp.bottom).offset(2)
+    func dropError(isPasswordValid: Bool, isLoginValid: Bool) {
+        // TODO: - доделать очистку ошибки
+        if !isPasswordValid {
+            passwordTextField.layer.borderColor = UIColor.red.cgColor
+            passwordTextField.showError("Enter a valid password")
         }
-        
-        
-        
+        if !isLoginValid {
+            loginTextField.layer.borderColor = UIColor.red.cgColor
+            loginTextField.showError("Enter a valid login")
+        }
     }
     
     func auth() {
@@ -272,42 +225,35 @@ class AuthViewController: UIViewController {
     // Errors thrown from here are not handled because the enclosing catch is not exhaustive
     
     
-    func proofAuthorisation(AuthViewModel: AuthViewModel) {
+    func proofAuthorisation(authModel: AuthModel) {
         
-        if passwordTextField.text == AuthViewModel.password && loginTextField.text == AuthViewModel.login {
+        if passwordTextField.text == authModel.password && loginTextField.text == authModel.login {
             print("success")
             userDefaults.set(passwordTextField.text, forKey: Keys.password.rawValue)
             userDefaults.set(loginTextField.text, forKey: Keys.login.rawValue)
-            
-            
+            // show next screen
+            viewModel.goToCoins()
         }
         else {
-            dropError()
+            dropError(
+                isPasswordValid: passwordTextField.text == authModel.password,
+                isLoginValid: loginTextField.text == authModel.login
+            )
             print("false password or login")
             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0 ) { [weak self] in
                 guard let self = self else { return }
-                self.SuccessAfterError()
-                
+                self.successAfterError()
             }
-            
         }
-        
     }
     
     
     
     @objc func loginMove() {
-        
-        proofAuthorisation(AuthViewModel: AuthViewModel(login: "1234", password: "1234"))
-        
+        proofAuthorisation(authModel: AuthModel(login: "1234", password: "1234"))
     }
     
-    
-
 }
-
-
-
 
 extension UIView {
     func dropShadow(scale: Bool = true) {

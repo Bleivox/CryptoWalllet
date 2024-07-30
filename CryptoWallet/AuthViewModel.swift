@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct AuthViewModel {
+    
+    var login: String
+    var password: String
+    
+}

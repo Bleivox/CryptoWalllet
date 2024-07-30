@@ -12,27 +12,29 @@
 		D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EC2C385148003A6005 /* AppDelegate.swift */; };
 		D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838EE2C385148003A6005 /* SceneDelegate.swift */; };
 		D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C838F02C385148003A6005 /* AuthViewController.swift */; };
-		D8C838F42C385148003A6005 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F32C385148003A6005 /* Base */; };
 		D8C838F62C385149003A6005 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F52C385149003A6005 /* Assets.xcassets */; };
 		D8C838F92C385149003A6005 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = D8C838F82C385149003A6005 /* Base */; };
 		D8C839072C3DCF80003A6005 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D8C839062C3DCF80003A6005 /* SnapKit */; };
-		D8C839092C443889003A6005 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839082C443889003A6005 /* Person.swift */; };
 		D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C8390B2C454D81003A6005 /* CoinsViewController.swift */; };
+		D8C839262C554B56003A6005 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839252C554B56003A6005 /* AppRouter.swift */; };
+		D8C839282C554EC3003A6005 /* AuthRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839272C554EC3003A6005 /* AuthRouterProtocol.swift */; };
+		D8C8392A2C55584D003A6005 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8C839292C55584D003A6005 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AuthViewModel.swift; path = ../AuthViewModel.swift; sourceTree = "<group>"; };
 		AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewModel.swift; sourceTree = "<group>"; };
 		D8C838E92C385148003A6005 /* CryptoWallet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWallet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8C838EC2C385148003A6005 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D8C838EE2C385148003A6005 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D8C838F02C385148003A6005 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		D8C838F32C385148003A6005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D8C838F52C385149003A6005 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D8C838F82C385149003A6005 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D8C838FA2C385149003A6005 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D8C839082C443889003A6005 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		D8C8390B2C454D81003A6005 /* CoinsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsViewController.swift; sourceTree = "<group>"; };
+		D8C839252C554B56003A6005 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		D8C839272C554EC3003A6005 /* AuthRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouterProtocol.swift; sourceTree = "<group>"; };
+		D8C839292C55584D003A6005 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,9 +73,10 @@
 				D8C8390B2C454D81003A6005 /* CoinsViewController.swift */,
 				AED68EA62C4AB3EA00F8342E /* CoinsViewModel.swift */,
 				D8C838F02C385148003A6005 /* AuthViewController.swift */,
-				AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */,
-				D8C838F22C385148003A6005 /* Main.storyboard */,
+				D8C839292C55584D003A6005 /* CustomTextField.swift */,
+				D8C839252C554B56003A6005 /* AppRouter.swift */,
 				D8C838F52C385149003A6005 /* Assets.xcassets */,
+				D8C839272C554EC3003A6005 /* AuthRouterProtocol.swift */,
 				D8C838F72C385149003A6005 /* LaunchScreen.storyboard */,
 				D8C838FA2C385149003A6005 /* Info.plist */,
 				D8C8390A2C4438E6003A6005 /* Models */,
@@ -84,7 +87,7 @@
 		D8C8390A2C4438E6003A6005 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D8C839082C443889003A6005 /* Person.swift */,
+				AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -155,7 +158,6 @@
 			files = (
 				D8C838F62C385149003A6005 /* Assets.xcassets in Resources */,
 				D8C838F92C385149003A6005 /* Base in Resources */,
-				D8C838F42C385148003A6005 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,27 +168,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8C839282C554EC3003A6005 /* AuthRouterProtocol.swift in Sources */,
 				D8C838F12C385148003A6005 /* AuthViewController.swift in Sources */,
 				AED68EA72C4AB3EA00F8342E /* CoinsViewModel.swift in Sources */,
 				D8C838ED2C385148003A6005 /* AppDelegate.swift in Sources */,
 				AED68EA52C4AB3E000F8342E /* AuthViewModel.swift in Sources */,
+				D8C839262C554B56003A6005 /* AppRouter.swift in Sources */,
 				D8C8390C2C454D81003A6005 /* CoinsViewController.swift in Sources */,
 				D8C838EF2C385148003A6005 /* SceneDelegate.swift in Sources */,
-				D8C839092C443889003A6005 /* Person.swift in Sources */,
+				D8C8392A2C55584D003A6005 /* CustomTextField.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D8C838F22C385148003A6005 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D8C838F32C385148003A6005 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D8C838F72C385149003A6005 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -329,7 +325,6 @@
 				INFOPLIST_FILE = CryptoWallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -358,7 +353,6 @@
 				INFOPLIST_FILE = CryptoWallet/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

@@ -1,14 +1,13 @@
 //
-//  Models.swift
+//  AuthViewModel.swift
 //  CryptoWallet
 //
-//  Created by Никита Долгов on 14.07.24.
+//  Created by Vadim Chistiakov on 19.07.2024.
 //
 
 import Foundation
 
-
-struct Person  {
+struct AuthViewModel  {
     
     let login : String
     let password : String

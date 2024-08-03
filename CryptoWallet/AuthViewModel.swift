@@ -25,4 +25,5 @@ class AuthViewModel {
     func goToCoins() {
         router.goToCoins()
     }
+    
 }

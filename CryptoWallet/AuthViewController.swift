@@ -56,14 +56,11 @@ import SnapKit
 
 class AuthViewController: UIViewController {
     
-// Segue надо удалить. Роутеры и координаторы - прочитать.
-// Router in ios Swift. Coordinator vs Router
     
-    // Убрать @IBOutlet и сделать всю верстку в коде. Сториборды удалить
     
     private let mainLabel: UILabel = UILabel()
-    private let loginTextField = UITextFieldsWithError(title: "email")
-    private let passwordTextField = UITextFieldsWithError(title: "password")
+    private let loginTextField = UITextFieldsWithError(title: "Email")
+    private let passwordTextField = UITextFieldsWithError(title: "Password")
     private let loginButton: UIButton = UIButton()
     
     let userDefaults =  UserDefaults()
@@ -79,20 +76,23 @@ class AuthViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    var isAuth =  Bool {
-//        
-//        
-//        if userDefaults.bool(forKey: Keys.password.rawValue) == userDefaults.bool(forKey: Keys.login.rawValue) {
-//            performSegue(withIdentifier: showCoinsSegueIdentifier, sender: nil)
-//        }
-//        
-//    
-//    }
-    
 //    func method(param: String, closure: (String) -> Void) {
 //        print(param)
 //        closure("param")
 //    }
+    
+    func isAuth() {
+        
+        if userDefaults.string(forKey: Keys.password.rawValue) == "1234" && userDefaults.string(forKey: Keys.login.rawValue) == "1234" {
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5 ) { [weak self] in
+                guard let self = self else { return }
+                viewModel.goToCoins()
+            }
+        } else {
+            
+        }
+    }
     
     private enum Keys: String {
         case password, login
@@ -104,7 +104,8 @@ class AuthViewController: UIViewController {
          setupViewModel()
         setupConstrains()
         // startLoading()
-//        isAuth()
+        
+        isAuth()
     }
     
     private func setupAuthViewModel() {
@@ -158,27 +159,27 @@ class AuthViewController: UIViewController {
         loginTextField.snp.makeConstraints {
             $0.left.right.equalTo(view.safeAreaLayoutGuide).inset(16)
             $0.top.equalTo(view.safeAreaLayoutGuide).inset(410)
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(300)
+//            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(270)
             $0.height.equalTo(44)
         }
         
         passwordTextField.snp.makeConstraints{
             $0.right.left.equalTo(view.safeAreaLayoutGuide).inset(16)
             $0.height.equalTo(44)
-            $0.top.equalTo(loginTextField.snp.bottom).inset(-30)
+            $0.top.equalTo(loginTextField.snp.bottom).inset(-35)
         }
         
-        mainLabel.snp.makeConstraints{ (maker) in
-            maker.right.equalTo(view.safeAreaLayoutGuide).inset(125)
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(125)
-            maker.bottom.equalTo(loginTextField.snp.top).inset(-25)
+        mainLabel.snp.makeConstraints{
+            $0.right.equalTo(view.safeAreaLayoutGuide).inset(125)
+            $0.left.equalTo(view.safeAreaLayoutGuide).inset(125)
+            $0.bottom.equalTo(loginTextField.snp.top).inset(-25)
         }
         
-        loginButton.snp.makeConstraints{ (maker) in
-            maker.left.equalTo(view.safeAreaLayoutGuide).inset(110)
-            maker.right.equalTo(view.safeAreaLayoutGuide).inset(110)
-            maker.height.equalTo(50)
-            maker.top.equalTo(passwordTextField.snp.bottom).inset(-30)
+        loginButton.snp.makeConstraints{
+            $0.left.equalTo(view.safeAreaLayoutGuide).inset(110)
+            $0.right.equalTo(view.safeAreaLayoutGuide).inset(110)
+            $0.height.equalTo(50)
+            $0.top.equalTo(passwordTextField.snp.bottom).inset(-30)
             
         }
     }
@@ -186,7 +187,9 @@ class AuthViewController: UIViewController {
     func successAfterError() {
         
         passwordTextField.layer.borderColor = UIColor.ypBlue.cgColor
+        loginTextField.layer.borderColor = UIColor.ypBlue.cgColor
         loginTextField.hideError()
+        passwordTextField.hideError()
     }
   
     func dropError(isPasswordValid: Bool, isLoginValid: Bool) {
@@ -201,28 +204,28 @@ class AuthViewController: UIViewController {
         }
     }
     
-    func auth() {
-        do {
-            let isValid = try checkPassword("1234")
-            print(isValid)
-        } catch {
-            print("\(error) password doesn't equal to 1234")
-        }
-    }
+//    func auth() {
+//        do {
+//            let isValid = try checkPassword("1234")
+//            print(isValid)
+//        } catch {
+//            print("\(error) password doesn't equal to 1234")
+//        }
+//    }
+//    
+//    func checkPassword(_ password: String) throws -> Bool  {
+//        if password == "1234" {
+//            return true
+//        } else {
+//            throw CustomError.wrongPassword
+//        }
+//    }
+//    
+//    enum CustomError: Error {
+//        case wrongPassword
+//    }
+//    
     
-    func checkPassword(_ password: String) throws -> Bool  {
-        if password == "1234" {
-            return true
-        } else {
-            throw CustomError.wrongPassword
-        }
-    }
-    
-    enum CustomError: Error {
-        case wrongPassword
-    }
-    
-    // Errors thrown from here are not handled because the enclosing catch is not exhaustive
     
     
     func proofAuthorisation(authModel: AuthModel) {

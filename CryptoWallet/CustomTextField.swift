@@ -43,12 +43,15 @@ class UITextFieldsWithError: UITextField {
     private func setupUI() {
         addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
-            $0.left.right.top.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(3)
+            $0.top.equalToSuperview().inset(-18)
         }
         addSubview(errorLabel)
         errorLabel.snp.makeConstraints {
-            $0.left.right.bottom.equalToSuperview()
+            $0.left.right.equalToSuperview().inset(5)
+            $0.bottom.equalToSuperview().inset(-17)
         }
+        
     }
         
     func showError(_ text: String) {

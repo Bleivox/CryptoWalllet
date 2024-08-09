@@ -13,6 +13,8 @@ final class CoinsViewController: UIViewController {
     
     private let coinsModel: CoinsViewModel
     private let userDefault = UserDefaults()
+//    private let coinsCollectionView: UICollectionView = UICollectionView()
+    
     
     init(coinsModel: CoinsViewModel) {
         self.coinsModel = coinsModel
@@ -29,7 +31,9 @@ final class CoinsViewController: UIViewController {
         view.backgroundColor = .green
         setupViewModel()
         setupConstrains()
-        
+//        self.coinsCollectionView.register(UINib(nibName: "CoinsCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "CoinsCollectionViewCell")
+//        self.coinsCollectionView.dataSource = self
+//        self.coinsCollectionView.delegate = self
     }
     
     private var logoutButton = UIButton()
@@ -48,6 +52,10 @@ final class CoinsViewController: UIViewController {
     
     private func setupConstrains() {
         
+//        coinsCollectionView.snp.makeConstraints{
+//            $0.right.left.bottom.top.equalToSuperview()
+//        }
+        
         logoutButton.snp.makeConstraints {
             $0.left.right.bottom.top.equalToSuperview()
         }
@@ -56,9 +64,23 @@ final class CoinsViewController: UIViewController {
     
     @objc func logout() {
         coinsModel.goToMain()
+        userDefault.removeObject(forKey: Keys.password.rawValue)
+        userDefault.removeObject(forKey: Keys.login.rawValue)
         
     }
     
 }
+
+//extension CoinsViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 0
+//    }
+//    
+////    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+////        return
+////    }
+//    
+//    
+//}
 
     // UICollectionView

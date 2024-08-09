@@ -8,27 +8,11 @@
 import UIKit
 import SnapKit
 
-// В AppDelegate проверять флаг в юзердефолтс
 // Если флаг isAuth == true - то показываем экран с монетами сразу
     // Если на экране монет нажали кнопку логаут то возвращаемся на экран авторизации
 // Если флаг isAuth == false - то показываем экран с арторизацией
     // После авторизации сохранять флаг в тру
 
-// Как сделать кастомный текст филд с обработкой ошибки?
-//class TextFieldWithError: UITextField {
-//    
-//    // UILabel - title
-//    // Constrainst
-//    // UITextField
-//    // Constrainst
-//    // UILabel - optional error
-//    // Constrainst
-//    
-//    // логика самого текст филда
-//    // добавить лэбл с ошибкой
-//    // обрабатывать состояния показа ошибки
-//    // констреинты между текстфилдом и лэйблом ошибки
-//    
 //    enum State {
 //        case success(text: String)
 //        case failure(errorMessage: String)
@@ -94,15 +78,15 @@ class AuthViewController: UIViewController {
         }
     }
     
-    private enum Keys: String {
-        case password, login
-    }
+//   enum Keys: String {
+//        case password, login
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
          setupViewController()
          setupViewModel()
-        setupConstrains()
+         setupConstrains()
         // startLoading()
         
         isAuth()

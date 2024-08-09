@@ -19,11 +19,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
                
-               window = UIWindow(windowScene: windowScene)
-               window?.windowScene = windowScene
-               window?.makeKeyAndVisible()
-               window?.rootViewController = AuthViewController()
+        window = UIWindow(windowScene: windowScene)
+        window?.windowScene = windowScene
         
+        // создаем навигейшн вью контроллер
+        let navigationController = UINavigationController()
+        
+        // создаем роутер с контроллером
+        let router = AuthRouter(navigationController: navigationController)
+        
+        // создаем вьюмодель с роутером
+        let viewModel = AuthViewModel(router: router)
+        
+        // создаем вьюконтроллер с вью моделью
+        let vc = AuthViewController(viewModel: viewModel)
+        
+        // кладем вьюконтроллер в навигейшн стек
+        navigationController.viewControllers = [vc]
+        
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
         
         
         // Проверяем авторизацию

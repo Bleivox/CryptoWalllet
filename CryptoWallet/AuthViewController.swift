@@ -220,6 +220,8 @@ class AuthViewController: UIViewController {
             userDefaults.set(loginTextField.text, forKey: Keys.login.rawValue)
             // show next screen
             viewModel.goToCoins()
+            passwordTextField.text = ""
+            loginTextField.text = ""
         }
         else {
             dropError(

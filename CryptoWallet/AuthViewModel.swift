@@ -7,9 +7,16 @@
 
 import Foundation
 
-struct AuthViewModel {
+class AuthViewModel {
     
-    var login: String
-    var password: String
+    private let router: AuthRouter
+    
+    init(router: AuthRouter) {
+        self.router = router
+    }
+    
+    func goToCoins() {
+        router.goToCoins()
+    }
     
 }

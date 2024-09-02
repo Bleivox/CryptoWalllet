@@ -102,7 +102,6 @@
 				D8C838FA2C385149003A6005 /* Info.plist */,
 				D87858C32C81FFED0071E2EC /* CoinsFactoryProtocol.swift */,
 				D87858C52C8200290071E2EC /* CoinsFactoryDelegate.swift */,
-				D87858C72C832FB50071E2EC /* CoinForCell.swift */,
 				D87858C12C81FDA20071E2EC /* CoinsFactory.swift */,
 				D87858BF2C81EF030071E2EC /* NetworkClient.swift */,
 				D8C8390A2C4438E6003A6005 /* Models */,
@@ -113,6 +112,7 @@
 		D8C8390A2C4438E6003A6005 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D87858C72C832FB50071E2EC /* CoinForCell.swift */,
 				AED68EA42C4AB3E000F8342E /* AuthViewModel.swift */,
 				D8C839382C79D6BD003A6005 /* MostPopularCoins.swift */,
 				D8C839362C6A6F80003A6005 /* AuthModel.swift */,

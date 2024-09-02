@@ -15,9 +15,18 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
         coinsFactory?.requestCoins()
     }
     
-//    func didFailToLoadData(with error: any Error) {
-//        <#code#>
-//    }
+    func didReceiveCoins(coins: CoinForCell?)  {
+        guard let coins = coins else {
+            return
+        }
+        
+        coin = coins
+        let viewmodel = convert(model: coins)
+    }
+    
+    func didFailToLoadData(with error: any Error) {
+        let message = error.localizedDescription
+    }
     
     
     
@@ -25,6 +34,7 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
     private let userDefault = UserDefaults()
     private var coinsFactory: CoinsFactoryProtocol?
     private var logoutButton = UIButton()
+    private var coin: CoinForCell?
     
     lazy var coinsCollectionView: UICollectionView = {
             let layout = UICollectionViewFlowLayout()
@@ -111,8 +121,8 @@ extension CoinsViewController: UICollectionViewDataSource, UICollectionViewDeleg
 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinsCollectionViewCell.id, for: indexPath) as! CoinsCollectionViewCell
         
-        let coin = coinMarket.coins[indexPath.item]
-        cell.SetupCell(coins: coin)
+        didLoadDataFromServer()
+        didReceiveCoins(coins: <#T##CoinForCell?#>)
         
         
         return cell

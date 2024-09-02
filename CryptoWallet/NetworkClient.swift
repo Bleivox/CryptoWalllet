@@ -9,7 +9,7 @@ import Foundation
 
 protocol NetworkRouting {
     
-    func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void)
+    func fetch(request: URLRequest, handler: @escaping (Result<Data, Error>) -> Void)
     
 }
 
@@ -19,11 +19,9 @@ struct NetworkClient: NetworkRouting {
         case codeError
     }
     
-    func fetch(url: URL, handler: @escaping (Result<Data, Error>) -> Void) {
-        
-        let request = URLRequest(url: url)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+    func fetch(request: URLRequest, handler: @escaping (Result<Data, Error>) -> Void) {
+                
+        URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 handler(.failure(error))
                 return
@@ -36,7 +34,7 @@ struct NetworkClient: NetworkRouting {
                }
             guard let data = data else { return }
             handler(.success(data))
-        }
+        }.resume()
         
     }
 }

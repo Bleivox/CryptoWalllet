@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-struct CoinsStepViewModel{
+struct CoinsStepViewModel {
     let image: UIImage
     let name: String
     let price: Float

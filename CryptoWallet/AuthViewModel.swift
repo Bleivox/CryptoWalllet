@@ -7,13 +7,6 @@
 
 import Foundation
 
-struct AuthModel {
-    
-    var login: String
-    var password: String
-    
-}
-
 class AuthViewModel {
     
     private let router: AuthRouter

@@ -7,14 +7,15 @@
 
 import UIKit
 
-class AuthRouter: CoinsRouter {
+final class AuthRouter: CoinsRouter {
+    
     
     
     func goToCoins() {
         let coinsViewModel = CoinsViewModel(router: self)
+        let coins = CoinsViewController(coinsModel: coinsViewModel)
         
-                let coins = CoinsViewController(coinsModel: coinsViewModel)
-                navigationController.pushViewController(coins, animated: true)
+        push(viewController: coins, animated: true)
 
     }
     

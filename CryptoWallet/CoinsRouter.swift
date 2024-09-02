@@ -8,12 +8,17 @@
 import Foundation
 import UIKit
 
- class CoinsRouter {
+class CoinsRouter {
     
-    let navigationController: UINavigationController
+    private let navigationController: UINavigationController
+     
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+    }
+    
+    func push(viewController: UIViewController , animated: Bool = true) {
+        navigationController.pushViewController(viewController, animated: animated)
     }
     
     func goToMain() {

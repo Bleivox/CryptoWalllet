@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 
-final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
+final class CoinsViewController: UIViewController, CoinsFactoryDelegate {
     
     func didLoadDataFromServer() {
-        coinsFactory?.requestCoins()
+        coinsCollectionView.reloadData()
     }
     
     func didReceiveCoins(coins: CoinForCell?)  {
@@ -20,7 +20,6 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
             return
         }
         
-        coin = coins
         let viewmodel = convert(model: coins)
     }
     
@@ -28,26 +27,23 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
         let message = error.localizedDescription
     }
     
-    
-    
     private let coinsModel: CoinsViewModel
     private let userDefault = UserDefaults()
     private var coinsFactory: CoinsFactoryProtocol?
     private var logoutButton = UIButton()
-    private var coin: CoinForCell?
     
-    lazy var coinsCollectionView: UICollectionView = {
-            let layout = UICollectionViewFlowLayout()
-            let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-            collection.backgroundColor = .systemGreen
-            return collection
-        }()
+    private lazy var coinsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.backgroundColor = .systemGreen
+        return collection
+    }()
     
     init(coinsModel: CoinsViewModel) {
         self.coinsModel = coinsModel
-        
+        super.init(nibName: nil, bundle: nil)
+
         coinsFactory = CoinsFactory(coinLoader: CoinsLoader(), delegate: self)
-        coinsFactory?.loadData()
     }
     
     required init?(coder: NSCoder) {
@@ -63,19 +59,18 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
         self.coinsCollectionView.register(CoinsCollectionViewCell.self, forCellWithReuseIdentifier: CoinsCollectionViewCell.id)
         self.coinsCollectionView.dataSource = self
         self.coinsCollectionView.delegate = self
+        coinsFactory?.loadData()
     }
-    
-    
     
     func convert(model: CoinForCell) -> CoinsStepViewModel{
         
         let coin = CoinsStepViewModel(image: UIImage(data: model.image) ?? UIImage(),
                                        name: model.name,
                                        price: model.price)
-        
         return coin
         
     }
+    
     func setupViewModel(){
         
         logoutButton.setTitle("Logout", for: .normal)
@@ -112,25 +107,21 @@ final class CoinsViewController: UIViewController , CoinsFactoryDelegate{
 extension CoinsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        
-        return
+        return coinsFactory?.coins.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinsCollectionViewCell.id, for: indexPath) as! CoinsCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinsCollectionViewCell.id, for: indexPath) as? CoinsCollectionViewCell,
+              let cellViewModel = coinsFactory?.coins[indexPath.item]
+        else { return .init() }
         
-        didLoadDataFromServer()
-        didReceiveCoins(coins: <#T##CoinForCell?#>)
-        
-        
+        cell.setupCell(coins: cellViewModel)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: view.bounds.width, height: 50)
-        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0

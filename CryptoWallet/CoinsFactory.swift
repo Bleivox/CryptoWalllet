@@ -9,11 +9,10 @@ import Foundation
 
 class CoinsFactory: CoinsFactoryProtocol {
     
-    
+    var coins: [Coin] = []
+
     private let coinLoader: CoinsLoader
     weak var delegate: CoinsFactoryDelegate?
-    private var coins: [Coin] = []
-    
     
     init(coinLoader: CoinsLoader, delegate: CoinsFactoryDelegate?) {
         self.coinLoader = coinLoader
@@ -21,13 +20,12 @@ class CoinsFactory: CoinsFactoryProtocol {
     }
     
     func loadData() {
-        
         coinLoader.loadCoins { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
                 case .success(let coins):
-                    self.coins = coins.items
+                    self.coins = coins
                     self.delegate?.didLoadDataFromServer()
                 case .failure(let error):
                     self.delegate?.didFailToLoadData(with: error)

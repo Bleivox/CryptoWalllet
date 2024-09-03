@@ -11,10 +11,8 @@ import SnapKit
 class CoinsCollectionViewCell: UICollectionViewCell {
     
     
-   static let id = "CoinsCollectionViewCell"
-    
-    private var coins: [CoinForCell] = []
-    
+    static let id = "CoinsCollectionViewCell"
+        
     var coinsName: UILabel = UILabel()
     var coinsPrice: UILabel = UILabel()
     
@@ -22,6 +20,14 @@ class CoinsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        contentView.addSubview(coinsName)
+        contentView.addSubview(coinsPrice)
+        coinsName.snp.makeConstraints{
+            $0.edges.equalToSuperview().inset(11)
+        }
+        coinsPrice.snp.makeConstraints {
+            $0.right.top.bottom.equalToSuperview().inset(11)
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -29,19 +35,9 @@ class CoinsCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func SetupCell(coins: CoinForCell) {
-        contentView.addSubview(coinsName)
-        contentView.addSubview(coinsPrice)
-        coinsName.snp.makeConstraints{
-            $0.edges.equalToSuperview().inset(11)
-        }
-        coinsPrice.snp.makeConstraints{
-            $0.right.top.bottom.equalToSuperview().inset(11)
-        }
+    func setupCell(coins: Coin) {
         self.coinsName.text = coins.name
         self.coinsPrice.text = "\(coins.price)"
-        
     }
-    
 
 }

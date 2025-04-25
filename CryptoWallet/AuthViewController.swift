@@ -4,10 +4,6 @@
 //
 //  Created by Никита Долгов on 05.07.24.
 //
-
-import UIKit
-import SnapKit
-
 // Если флаг isAuth == true - то показываем экран с монетами сразу
     // Если на экране монет нажали кнопку логаут то возвращаемся на экран авторизации
 // Если флаг isAuth == false - то показываем экран с арторизацией
@@ -37,6 +33,8 @@ import SnapKit
 // ViewModel - может оповестить ViewController об изменениях
 // ViewModel через замыкание оповещает вью об изменениях
 
+import UIKit
+import SnapKit
 
 class AuthViewController: UIViewController {
     
@@ -60,10 +58,6 @@ class AuthViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-//    func method(param: String, closure: (String) -> Void) {
-//        print(param)
-//        closure("param")
-//    }
     
     func isAuth() {
         
@@ -78,9 +72,6 @@ class AuthViewController: UIViewController {
         }
     }
     
-//   enum Keys: String {
-//        case password, login
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -255,3 +246,4 @@ extension UIView {
         layer.rasterizationScale = scale ? UIScreen.main.scale : 1
     }
 }
+

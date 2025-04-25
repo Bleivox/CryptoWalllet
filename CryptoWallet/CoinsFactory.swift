@@ -9,8 +9,9 @@ import Foundation
 
 class CoinsFactory: CoinsFactoryProtocol {
     
-    var coins: [Coin] = []
-
+    
+    private var coins: [Coin] = []
+    
     private let coinLoader: CoinsLoader
     weak var delegate: CoinsFactoryDelegate?
     
@@ -24,40 +25,54 @@ class CoinsFactory: CoinsFactoryProtocol {
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
-                case .success(let coins):
-                    self.coins = coins
+                case .success(let coinsArray):
+                    self.coins = coinsArray // Теперь просто массив Coin
                     self.delegate?.didLoadDataFromServer()
                 case .failure(let error):
                     self.delegate?.didFailToLoadData(with: error)
                 }
             }
-            
         }
     }
+    
     
     func requestCoins() {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             
-            let index = self.coins.count
-            
-            let coin = self.coins[index]
-                    
-            var imageData = Data()
-            
-            do {
-                imageData = try Data(contentsOf: coin.image)
-                
-            } catch {
-                print("Failed to load image")
-
+            guard !self.coins.isEmpty else {
+                print("No coins available.")
+                return
             }
-            let price = Float(coin.price) ?? 0
+        
+            var coinsForCells: [CoinForCell] = []
             
-            let name = coin.name
+            for coin in self.coins {
+                var imageData = Data()
+                
+                do {
+                    imageData = try Data(contentsOf: coin.image)
+                } catch {
+                    print("Failed to load image: \(error.localizedDescription)")
+                    continue
+                }
+                
+                let notRoundingPrice = Double(coin.price) ?? 0
+                
+                let price = round(notRoundingPrice * 100)/100.0
+                let name = coin.name
+                
+                let coinForCell = CoinForCell(name: name, price: price, image: imageData)
+                coinsForCells.append(coinForCell)
+            }
             
-            let coinForCell = CoinForCell(name: name, price: price, image: imageData)
-    
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                self.delegate?.didReceiveCoins(coins: coinsForCells)
+            }
         }
     }
+    
+    
+    
 }

@@ -11,5 +11,5 @@ import UIKit
 struct CoinsStepViewModel {
     let image: UIImage
     let name: String
-    let price: Float
+    let price: Double
 }

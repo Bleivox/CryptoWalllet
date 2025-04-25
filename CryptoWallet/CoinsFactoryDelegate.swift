@@ -10,4 +10,5 @@ import Foundation
 protocol CoinsFactoryDelegate: AnyObject {
     func didLoadDataFromServer()
     func didFailToLoadData(with error: Error)
+    func didReceiveCoins(coins: [CoinForCell])
 }

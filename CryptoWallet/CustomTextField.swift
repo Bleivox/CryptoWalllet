@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 import SnapKit
 
-// TODO: - проверить констреинты
-// доделать логику скрытия/показа ошибок
 
 class UITextFieldsWithError: UITextField {
     
@@ -63,3 +61,4 @@ class UITextFieldsWithError: UITextField {
         errorLabel.isHidden = true
     }
 }
+

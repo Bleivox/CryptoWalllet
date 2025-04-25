@@ -7,7 +7,6 @@
 
 import Foundation
 protocol CoinsFactoryProtocol {
-    var coins: [Coin] { get }
     
     var delegate: CoinsFactoryDelegate? { get set }
     func requestCoins()

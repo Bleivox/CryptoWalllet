@@ -9,7 +9,6 @@ import Foundation
 
 struct CoinForCell {
     let name : String
-    let price: Float
+    let price: Double
     let image: Data
-//    let count: Int
 }

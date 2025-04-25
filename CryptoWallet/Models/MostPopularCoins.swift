@@ -8,12 +8,6 @@
 import Foundation
 import UIKit
 
-struct Coins: Codable {
-    
-    let errorMassage: String
-    let items: [Coin]
-    
-}
 
 struct Coin: Codable {
     let name: String
@@ -60,43 +54,22 @@ struct CoinsLoader: CoinsLoading {
         }
         
         
-        func loadCoins(handler: @escaping (Result<[Coin], Error>) -> Void) {
+    func loadCoins(handler: @escaping (Result<[Coin], Error>) -> Void) {
             networkClient.fetch(request: mostPopularCoinsUrl) { result in
                 switch result {
                 case .success(let data):
                     do {
-                        let mostPopularCoins = try JSONDecoder().decode([Coin].self, from: data)
-                        handler(.success(mostPopularCoins))
+                        let coins = try JSONDecoder().decode([Coin].self, from: data)
+                        handler(.success(coins))
+                    }
+                     catch let DecodingError.valueNotFound(value, context) {
+                        print("Value '\(value)' not found: \(context)")
                     } catch {
-                        handler(.failure(error))
+                        print("Error decoding JSON: \(error)")
                     }
                 case .failure(let error):
                     handler(.failure(error))
                 }
             }
-            
-            
-            
         }
-        
     }
-
-
-//class CoinMarket {
-//    
-//    var coins = [Coin]()
-//    
-//    init() {
-//        setup()
-//    }
-    
-//    func setup() {
-//        
-//        let coin1 = Coins(name: "btc", price: 48000)
-//        let coin2 = Coins(name: "eth", price: 20000)
-//        let coin3 = Coins(name: "ton", price: 27989)
-//        self.coins = [coin1,coin2,coin3]
-//        
-//    }
-//    
-//}

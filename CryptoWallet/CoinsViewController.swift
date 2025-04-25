@@ -12,38 +12,38 @@ import SnapKit
 final class CoinsViewController: UIViewController, CoinsFactoryDelegate {
     
     func didLoadDataFromServer() {
+        coinsFactory?.requestCoins()
+    }
+    
+    func didReceiveCoins(coins: [CoinForCell]) {
+        self.currentCoin = coins
         coinsCollectionView.reloadData()
     }
     
-    func didReceiveCoins(coins: CoinForCell?)  {
-        guard let coins = coins else {
-            return
-        }
-        
-        let viewmodel = convert(model: coins)
-    }
-    
     func didFailToLoadData(with error: any Error) {
-        let message = error.localizedDescription
+        let alert = UIAlertController(title: "Ошибка", message: error.localizedDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ОК", style: .default))
+            present(alert, animated: true)
     }
     
     private let coinsModel: CoinsViewModel
     private let userDefault = UserDefaults()
     private var coinsFactory: CoinsFactoryProtocol?
     private var logoutButton = UIButton()
+    private var currentCoin: [CoinForCell] = []
+
+    
     
     private lazy var coinsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collection.backgroundColor = .systemGreen
+        collection.backgroundColor = .white
         return collection
     }()
     
     init(coinsModel: CoinsViewModel) {
         self.coinsModel = coinsModel
         super.init(nibName: nil, bundle: nil)
-
-        coinsFactory = CoinsFactory(coinLoader: CoinsLoader(), delegate: self)
     }
     
     required init?(coder: NSCoder) {
@@ -53,12 +53,13 @@ final class CoinsViewController: UIViewController, CoinsFactoryDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .green
         setupViewModel()
         setupConstrains()
         self.coinsCollectionView.register(CoinsCollectionViewCell.self, forCellWithReuseIdentifier: CoinsCollectionViewCell.id)
+        coinsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "EmptyCell")
         self.coinsCollectionView.dataSource = self
         self.coinsCollectionView.delegate = self
+        coinsFactory = CoinsFactory(coinLoader: CoinsLoader(), delegate: self)
         coinsFactory?.loadData()
     }
     
@@ -107,15 +108,24 @@ final class CoinsViewController: UIViewController, CoinsFactoryDelegate {
 extension CoinsViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return coinsFactory?.coins.count ?? 0
+        return currentCoin.isEmpty ? 1 : currentCoin.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinsCollectionViewCell.id, for: indexPath) as? CoinsCollectionViewCell,
-              let cellViewModel = coinsFactory?.coins[indexPath.item]
-        else { return .init() }
         
-        cell.setupCell(coins: cellViewModel)
+        if currentCoin.isEmpty {
+                    // Показать пустой или индикатор загрузки
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath)
+                    cell.backgroundColor = .lightGray // Можно поставить индикатор загрузки или пустое сообщение
+                    return cell
+                }
+        
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CoinsCollectionViewCell.id, for: indexPath) as? CoinsCollectionViewCell
+        
+        else { return UICollectionViewCell() }
+        
+        let coinModel = currentCoin[indexPath.item]
+        cell.setupCell(coins: convert(model: coinModel))
         return cell
     }
     
@@ -130,4 +140,3 @@ extension CoinsViewController: UICollectionViewDataSource, UICollectionViewDeleg
     
 }
 
-    // UICollectionView
